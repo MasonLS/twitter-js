@@ -11,7 +11,8 @@ router.use(express.static('./public'));
 // 	res.sendFile(__dirname + '/stylesheets/style.css');
 // });
 
-router.get('/', function (req, res) {
+module.exports = function (io) {
+	router.get('/', function (req, res) {
 	var name = ['','']
   var tweets = tweetBank.list();
   res.render( 'index', { tweets: tweets, thisName: name, showForm: true } );
@@ -21,6 +22,7 @@ router.post('/tweets', function(req, res){
   var name = req.body.name;
   var text = req.body.text;
   tweetBank.add(name, text);
+  io.sockets.emit('newTweet', {name: name, content: text });
   res.redirect('/');
 });
 
@@ -37,5 +39,5 @@ router.get('/tweets/:id', function(req, res) {
 	var rightTweet = tweetBank.find( {id: id} );
 	res.render( 'index', { tweets: rightTweet });
 });
-
-module.exports = router;
+	return router;
+};
