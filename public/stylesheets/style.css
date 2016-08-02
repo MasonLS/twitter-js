@@ -41,6 +41,12 @@ code {
   font-size: 80%;
 }
 
+.name {
+  color:red;
+  font-size: 20px;
+  font-style: italic;
+}
+
 .tweetbox {
   padding: 7px;
 }
@@ -56,4 +62,8 @@ code {
 }
 .content .by {
   font-weight: bold;
+}
+form {
+  display: "inline";
+  float: "right";
 }

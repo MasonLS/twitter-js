@@ -4,6 +4,17 @@
   
   <div class="page-header">
     <h1>Welcome to Twitter.js!</h1>
+    {% if showForm %}
+  <form action="/tweets" method="POST">
+    <label for="name_field">Name:</label>
+    <input name="name" type="text" id="name_field" />
+
+    <label for="text_field">Text:</label>
+    <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+    <input type="submit" value="Submit" />
+  </form>
+{% endif %}
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -11,11 +22,14 @@
       <b>Your Name</b><br>
       100 followers
     </div>
+
     <div class="col-md-9">
-    
+    	
       <!-- display tweets here -->
       {% for tweet in tweets %}
-        <li>{{tweet.content}}</li>
+		<a class="name" href="/users/{{tweet.name}}">{{tweet.name}}</a>        
+		<li>{{tweet.content}}</li>
+		<a href="/tweets/{{tweet.id}}">permalink</a><br>
       {% endfor %}
       
     </div>
