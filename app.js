@@ -1,22 +1,18 @@
+var routes = require('./routes/');
 var express = require('express');
+var swig = require('swig');
+swig.setDefaults({ cache: false });
 
 var app = express();
+var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
 
 var server = app.listen(3000);
 
-app.use('/secret', function(req,res,next) {
-	for (var prop in res) {
-		console.log(prop);
-	}
-})
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
+app.engine('html', swig.renderFile);
 
-//add status code later
-app.use(function(req,res,next) {
-	console.log(req['method'], req['path'], res.statusCode);
-	next()
-});
-
-app.get('/', function(req, res, next){
-	res.send('whatever');
-});
-
+app.use('/', routes);
+// app.use(function(req,res,next) {
+// 	res.render( 'index', {title: 'Hall of Fame', people: people} );
+// });
