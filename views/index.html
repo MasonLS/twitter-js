@@ -23,8 +23,15 @@
       100 followers
     </div>
 
+
     <div class="col-md-9">
-    	
+    <div class="newTweets">
+      
+    </div>
+    <!-- <a class="name" href="/users/{{tweet.name}}" id="newTweetAuthor"></a>   
+    <a href="/tweets/{{tweet.id}}" class="newid-link"></a><br>
+    <li id="newTweet"></li> -->
+
       <!-- display tweets here -->
       {% for tweet in tweets %}
 		<a class="name" href="/users/{{tweet.name}}">{{tweet.name}}</a>   

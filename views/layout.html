@@ -83,7 +83,7 @@
 <script>
   // Load the socket.io library above, then connect to the server.
   // Because the socket.io server is being run on the same server as your 
-  // Express instance, you can connect() without any arguments.
+  // Express instance, you can connect() without any arguments. 
   var socket = io.connect();
   socket.on('connect', function(){
     console.log('connected to server via WebSockets!');
@@ -91,9 +91,23 @@
   // When 'new_tweet' events are fired, do something with the packaged tweet
   socket.on('newTweet', function (tweet) { 
     console.log(tweet);
-    alert('Refreshing... check the console...');
+    // alert('Refreshing... check the console...');
     // some logic to add the new tweet to the DOM…
-    
+
+    var nameUrl = "/users/";
+    var tweetName = tweet.name;
+    var tweetUrl = "/tweets/";
+    var tweetID = tweet.id;
+    var $tweetContent = $('<li>').text(tweet.content)
+    var $tweetLink = $('<a>').attr("class", "id-link").attr('href', '/tweets/' + tweetID).text("permalink")
+    var $tweetAuthor = $('<a>').attr("class", "name").attr("href", '/users/' + tweet.name).text(tweet.name);
+
+    $('.newTweets').prepend($tweetContent);
+    $('.newTweets').prepend($tweetLink)
+    $('.newTweets').prepend($tweetAuthor)
+    $('.newTweets').show();
+    // $('#newTweet').text(tweet.content);
+    // $('#newTweet-id-link').text("permalink")
   }); 
 </script>
 </html>

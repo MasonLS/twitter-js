@@ -15,6 +15,7 @@ module.exports = function (io) {
   router.get('/', function (req, res) {
   var name = '';
   var tweets = tweetBank.list();
+  tweets.sort(function(a,b) {return b['id'] - a['id']; })
   res.render( 'index', { tweets: tweets, thisName: name, showForm: true } );
 });
 
