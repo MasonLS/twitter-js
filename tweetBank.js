@@ -28,7 +28,7 @@ var getFakeName = function() {
 
 var getFakeTweet = function() {
   var awesome_adj = ['awesome', 'breathtaking', 'amazing', 'funny', 'sweet', 'cool', 'wonderful', 'mindblowing'];
-  return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
+  return "Seeing animals in the house is " + randArrayEl(awesome_adj) + "! When the animal breaks into my house, I think that's " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
 };
 
 for (var i = 0; i < 10; i++) {

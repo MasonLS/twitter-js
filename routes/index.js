@@ -12,8 +12,8 @@ router.use(express.static('./public'));
 // });
 
 module.exports = function (io) {
-	router.get('/', function (req, res) {
-	var name = ['','']
+  router.get('/', function (req, res) {
+  var name = '';
   var tweets = tweetBank.list();
   res.render( 'index', { tweets: tweets, thisName: name, showForm: true } );
 });
@@ -30,8 +30,7 @@ router.get('/users/:name', function(req, res) {
 	var name = req.params.name;
 	// console.log(name);
     var list = tweetBank.find( {name: name} );
-    name = name.split(' ') 
-	res.render( 'index', { tweets: list, thisName: name, showForm: true});
+    res.render( 'index', { tweets: list, thisName: name, showForm: true});
 });
 
 router.get('/tweets/:id', function(req, res) {

@@ -41,14 +41,24 @@ code {
   font-size: 80%;
 }
 
+li {
+  border: 10px;
+  list-style-type: none;
+  margin-left: 30px;
+}
+
 .name {
-  color:red;
   font-size: 20px;
-  font-style: italic;
+  font-style: bold;
+  color: black;
 }
 
 .tweetbox {
   padding: 7px;
+}
+
+.col-md-9 {
+  border: 10px;
 }
 
 .tweetbox img {
@@ -59,6 +69,7 @@ code {
 }
 .content {
   margin-left: 60px;
+  border: 10px;
 }
 .content .by {
   font-weight: bold;
@@ -66,4 +77,10 @@ code {
 form {
   display: "inline";
   float: "right";
+  margin-bottom: 20px;
+}
+
+.id-link {
+  font-size: 10px;
+  font-style: italic;
 }
