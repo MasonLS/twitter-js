@@ -89,22 +89,19 @@
     console.log('connected to server via WebSockets!');
   });
   // When 'new_tweet' events are fired, do something with the packaged tweet
-  socket.on('newTweet', function (tweet) { 
-    console.log(tweet);
+  socket.on('newTweet', function (tweet) {
     // alert('Refreshing... check the console...');
     // some logic to add the new tweet to the DOM…
 
-    var nameUrl = "/users/";
-    var tweetName = tweet.name;
-    var tweetUrl = "/tweets/";
-    var tweetID = tweet.id;
-    var $tweetContent = $('<li>').text(tweet.content)
-    var $tweetLink = $('<a>').attr("class", "id-link").attr('href', '/tweets/' + tweetID).text("permalink")
-    var $tweetAuthor = $('<a>').attr("class", "name").attr("href", '/users/' + tweet.name).text(tweet.name);
+    var nameUrl = "/users/" + tweet.name;
+    var tweetUrl = "/tweets/" + tweet.id;
+    var $tweetContent = $('<li>').text(tweet.content);
+    var $tweetLink = $('<a>').attr("class", "id-link").attr('href', tweetUrl).text("permalink");
+    var $tweetAuthor = $('<a>').attr("class", "name").attr("href", nameUrl).text(tweet.name).append('\n');
 
     $('.newTweets').prepend($tweetContent);
-    $('.newTweets').prepend($tweetLink)
-    $('.newTweets').prepend($tweetAuthor)
+    $('.newTweets').prepend($tweetLink);
+    $('.newTweets').prepend($tweetAuthor);
     $('.newTweets').show();
     // $('#newTweet').text(tweet.content);
     // $('#newTweet-id-link').text("permalink")
